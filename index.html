@@ -1712,6 +1712,114 @@ body {
       .jt-item { width: 100%; }
       .skill-stats { grid-template-columns: 1fr 1fr; }
     }
+
+
+
+    /* ---- DESIGN SECTION ---- */
+.design-section-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.design-tag {
+  font-family: var(--font-sub);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 3px;
+}
+.pink-tag { background:rgba(255,0,128,0.1); color:var(--pink); border:1px solid rgba(255,0,128,0.25); }
+.lime-tag { background:rgba(200,255,0,0.08); color:var(--lime); border:1px solid rgba(200,255,0,0.2); }
+.dim-tag  { background:rgba(255,255,255,0.05); color:var(--text-med); border:1px solid var(--border); }
+
+/* Mosaic grid */
+.design-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 160px 100px 130px;
+  gap: 10px;
+}
+
+/* Base card */
+.mosaic-card {
+  border-radius: 14px;
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* hover — CSS only, no JS, works perfectly on mobile */
+@media (hover: hover) {
+  .mosaic-card:hover { transform: translateY(-4px); }
+  .mc-pink:hover  { box-shadow: 0 0 20px rgba(255,0,128,0.35); }
+  .mc-lime:hover  { box-shadow: 0 0 20px rgba(200,255,0,0.25); }
+  .mc-wide:hover  { box-shadow: 0 0 20px rgba(200,255,0,0.2); }
+}
+
+.mc-tall { grid-row: span 2; }
+.mc-wide { grid-column: span 2; }
+.mc-stat { background: var(--dark-2); display:flex; align-items:center; gap:12px; padding:0 16px; }
+
+/* Card internals */
+.mc-bar { position:absolute; top:0; left:0; right:0; height:3px; }
+.mc-bar-pink { background:linear-gradient(90deg,var(--pink),transparent); }
+.mc-bar-lime { background:linear-gradient(90deg,var(--lime),transparent); }
+
+.mc-label {
+  position:absolute; top:12px; left:12px;
+  font-family:var(--font-sub); font-size:0.58rem; font-weight:900;
+  letter-spacing:0.2em; text-transform:uppercase;
+  padding:3px 9px; border-radius:3px;
+}
+.mc-label-pink { background:var(--pink); color:var(--white); }
+.mc-label-lime { background:var(--lime); color:var(--dark); }
+
+.mc-bg-letter {
+  position:absolute; bottom:-10px; right:-4px;
+  font-family:var(--font-head); font-size:7rem; line-height:1;
+  pointer-events:none; user-select:none;
+}
+.mc-tall .mc-bg-letter { font-size:7rem; }
+.mc-wide .mc-bg-letter { font-size:5rem; }
+
+.mc-placeholder {
+  width:100%; height:100%;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:8px;
+}
+.mc-icon  { font-size:2rem; opacity:0.2; }
+.mc-hint  { font-family:var(--font-sub); font-size:0.58rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-dim); }
+
+.mc-stat-num { font-family:var(--font-head); font-size:2rem; color:var(--pink); text-shadow:0 0 16px var(--pink-glow); flex-shrink:0; }
+.mc-stat-label { font-family:var(--font-sub); font-size:0.62rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); }
+.mc-stat-val   { font-family:var(--font-sub); font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--white); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .design-section-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .design-mosaic {
+    grid-template-rows: 140px 90px 110px;
+  }
+}
+@media (max-width: 480px) {
+  .design-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 120px 80px 100px;
+  }
+  .mc-wide { grid-column: span 2; }
+  .mc-tall { grid-row: span 2; }
+}
   </style>
 </head>
 
@@ -1734,6 +1842,7 @@ body {
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#certs">Certs</a></li>
+    <li><a href="#design">Design</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-badge"> Hire Me</a>
@@ -1943,9 +2052,7 @@ body {
     </div>
   </div>
 </section>
-<!-- ===================================
-     STACK — THE STACK
-=================================== -->
+
 <section id="stack">
   <div class="stack-inner">
     <div class="stack-header">
@@ -2378,12 +2485,76 @@ Built using a Flask + Python backend and a static HTML/CSS frontend, the chatbot
 </section>
 
 <!-- ===================================
+     DESIGN — THE DESIGN -->
+<section id="design" style="padding:100px 5%; background:var(--dark); border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden;">
+  <div class="design-section-inner">
+
+    <!-- LEFT — text -->
+    <div>
+      <div class="chap-label reveal">Chapter 07</div>
+      <h2 class="sec-title reveal d1">
+        THE <span class="t-outline">DESIGN</span>
+        <span class="neon-strip pink"></span>
+      </h2>
+
+      <p class="reveal d2" style="font-size:1rem; color:var(--text-med); line-height:1.7; max-width:480px; margin:28px 0 20px;">
+        Branding, UI/UX, motion graphics, and print — a curated gallery of visual work built alongside the code.
+      </p>
+
+      <div class="reveal d3" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:36px;">
+        <span class="design-tag pink-tag">Branding</span>
+        <span class="design-tag lime-tag">UI / UX</span>
+        <span class="design-tag dim-tag">Motion</span>
+        <span class="design-tag dim-tag">Print</span>
+      </div>
+
+      <a href="design.html" class="btn-game btn-pink reveal d4">
+        View Design Portfolio ↗
+      </a>
+    </div>
+
+    <!-- RIGHT — mosaic preview -->
+    <div class="reveal d2 design-mosaic">
+
+      <div class="mosaic-card mc-pink mc-tall">
+        <div class="mc-bar mc-bar-pink"></div>
+        <span class="mc-label mc-label-pink">Brand</span>
+        <div class="mc-bg-letter" style="color:rgba(255,0,128,0.06);">B</div>
+        <div class="mc-placeholder"><span class="mc-icon">🖼</span><span class="mc-hint">Your Image</span></div>
+      </div>
+
+      <div class="mosaic-card mc-lime">
+        <div class="mc-bar mc-bar-lime"></div>
+        <span class="mc-label mc-label-lime">UI</span>
+        <div class="mc-bg-letter" style="color:rgba(200,255,0,0.05);">U</div>
+        <div class="mc-placeholder"><span class="mc-icon">🖼</span></div>
+      </div>
+
+      <div class="mosaic-card mc-stat">
+        <div class="mc-stat-num">48+</div>
+        <div>
+          <div class="mc-stat-label">Projects</div>
+          <div class="mc-stat-val">Done</div>
+        </div>
+      </div>
+
+      <div class="mosaic-card mc-wide">
+        <div class="mc-bar" style="background:linear-gradient(90deg,var(--lime),var(--pink));"></div>
+        <span class="mc-label mc-label-lime" style="background:rgba(200,255,0,0.12);color:var(--lime);border:1px solid rgba(200,255,0,0.2);">Print</span>
+        <div class="mc-bg-letter" style="color:rgba(200,255,0,0.04);">P</div>
+        <div class="mc-placeholder"><span class="mc-icon">🖼</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===================================
      CONTACT — THE SIGNAL
 =================================== -->
 <section id="contact">
   <div class="contact-inner">
     <div class="contact-info">
-      <div class="chap-label reveal">Chapter 07</div>
+      <div class="chap-label reveal">Chapter 08</div>
       <h2 class="contact-big reveal d1">
         SEND<br>THE <span class="cl">SIGNAL</span>
       </h2>
